@@ -19,13 +19,27 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-    public void create(String name, int age, String email) { userDao.create(name ,age, email); }
-    public void create(User user){userDao.create(user);}
+    public void create(String name, int age, String email) {
+        userDao.create(name ,age, email);
+    }
 
-    public User read(long id) { return userDao.read(id); }
-    public List<User> readAll(){ return userDao.readAll();}
+    public void create(User user){
+        userDao.create(user);
+    }
 
-    public void update(User user) { userDao.update(user); }
+    public User read(long id) {
+        return userDao.read(id);
+    }
 
-    public void delete(User user) { userDao.delete(user); }
+    public List<User> readAll(){
+        return userDao.readAll();
+    }
+
+    public void update(User user) {
+        userDao.update(user);
+    }
+
+    public void delete(User user) {
+        userDao.delete(user);
+    }
 }

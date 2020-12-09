@@ -15,15 +15,27 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void create(String name, int age, String email) { entityManager.persist(new User(name, age, email)); }
-    public void create(User user) { entityManager.persist(user);}
+    public void create(String name, int age, String email) {
+        entityManager.persist(new User(name, age, email));
+    }
 
-    public User read(long id) { return entityManager.find(User.class, id); }
-    public List<User> readAll() { return entityManager.createQuery("FROM User").getResultList(); }
+    public void create(User user) {
+        entityManager.persist(user);
+    }
 
-    public void update(User user){ entityManager.merge(user); }
+    public User read(long id) {
+        return entityManager.find(User.class, id);
+    }
 
-    public void delete(User user) { entityManager.remove(entityManager.merge(user)); }
+    public List<User> readAll() {
+        return entityManager.createQuery("FROM User").getResultList();
+    }
 
+    public void update(User user){
+        entityManager.merge(user);
+    }
+
+    public void delete(User user) {
+        entityManager.remove(entityManager.merge(user));
+    }
 }
-
